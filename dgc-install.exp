@@ -13,7 +13,7 @@ if {$force_conservative} {
 set timeout -1
 spawn $env(SHELL)
 match_max 100000
-expect -exact "/# "
+expect -exact "# "
 send -- "sh ./dgc-linux-5.4.3-FINAL.sh\r"
 expect -exact "Specify the installation directory \[/opt/collibra\]:"
 send -- "\r"
