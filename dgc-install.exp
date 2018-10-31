@@ -14,7 +14,7 @@ set timeout -1
 spawn $env(SHELL)
 match_max 100000
 expect -exact "# "
-send -- "sh ./dgc-linux-5.4.3-FINAL.sh\r"
+send -- "sh ./dgc-linux-5.5.1-FINAL.sh\r"
 expect -exact "Specify the installation directory \[/opt/collibra\]:"
 send -- "\r"
 expect -exact "Please specify the data directory \[/opt/collibra_data\]:"

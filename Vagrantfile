@@ -68,11 +68,11 @@ Vagrant.configure("2") do |config|
     sudo yum install expect java-1.8.0-openjdk wget git -y
     sudo adduser -rm  -s /bin/bash  collibra
     echo "Download Collibra installer"
-    sudo wget -O dgc-linux-5.4.3-FINAL.sh -q http://owncloud.reeuwijk.net/index.php/s/bpdbB0DsvNf71JB/download
+    sudo wget -O dgc-linux-5.5.1-FINAL.sh -q https://owncloud.reeuwijk.net/index.php/s/mHTII386yJv1u0d/download
     echo "Download expect script"
     sudo wget -O dgc-install.exp -q https://raw.githubusercontent.com/wbvreeuwijk/vagrant-dgc/master/dgc-install.exp
     echo "Start installation"
     sudo expect -f dgc-install.exp
-    sudo rm dgc-linux-5.4.3-FINAL.sh
+    sudo rm dgc-linux-5.5.1-FINAL.sh
   SHELL
 end
