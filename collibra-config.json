@@ -1,0 +1,30 @@
+{
+    "installationDirectory": "/opt/collibra/",
+    "dataDirectory": "/opt/collibra_data/",
+    "repositoryMemory": 1024,
+    "dgcMinMemory": 1024,
+    "dgcMaxMemory": 2048,
+    "dgcPort": 4400,
+    "dgcShutdownPort": 4430,
+    "repositoryPort": 4403,
+    "consolePort": 4402,
+    "agentPort": 4401,
+    "jobserverPort": 4404,
+    "jobserverDatabasePort": 4414,
+    "monitoringPort": 4407,
+    "dgcContextPath": "",
+    "consoleContextPath": "",
+    "repoAdminPassword": "aV3r4Str0ngP@sww0rd",
+    "repoDgcPassword": "aV3r4Str0ngP@ssw0rd",
+    "upgradePath": [
+        "5.5"
+    ],
+    "initDaemon": null,
+    "componentSet": [
+        "CONSOLE",
+        "JOBSERVER",
+        "AGENT",
+        "REPOSITORY",
+        "DGC"
+    ]
+}

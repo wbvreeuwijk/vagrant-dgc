@@ -69,10 +69,8 @@ Vagrant.configure("2") do |config|
     sudo adduser -rm  -s /bin/bash  collibra
     echo "Download Collibra installer"
     sudo wget -O dgc-linux-5.5.1-FINAL.sh -q https://owncloud.reeuwijk.net/index.php/s/mHTII386yJv1u0d/download
-    echo "Download expect script"
-    sudo wget -O dgc-install.exp -q https://raw.githubusercontent.com/wbvreeuwijk/vagrant-dgc/master/dgc-install.exp
-    echo "Start installation"
-    sudo expect -f dgc-install.exp
+    sudo chmod 755 dgc-linux-5.5.1-FINAL.sh
+    sudo ./dgc-linux-5.5.1-FINAL.sh -- --config /vagrant/collibra-config.json
     sudo rm dgc-linux-5.5.1-FINAL.sh
   SHELL
 end
