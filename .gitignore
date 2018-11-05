@@ -1,2 +1,6 @@
 
 .vagrant/*
+
+\.DS_Store
+
+dgc-linux-5\.5\.1-FINAL\.sh

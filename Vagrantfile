@@ -5,6 +5,7 @@
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
+require 'vagrant-aws'
 Vagrant.configure("2") do |config|
   # The most common configuration options are documented and commented below.
   # For a complete reference, please see the online documentation at
@@ -56,6 +57,7 @@ Vagrant.configure("2") do |config|
      # Customize the amount of memory on the VM:
      vb.memory = "4096"
   end
+
   #
   # View the documentation for the provider you are using for more
   # information on available options.
@@ -67,10 +69,7 @@ Vagrant.configure("2") do |config|
     sudo yum upgrade -y
     sudo yum install expect java-1.8.0-openjdk wget git -y
     sudo adduser -rm  -s /bin/bash  collibra
-    echo "Download Collibra installer"
-    sudo wget -O dgc-linux-5.5.1-FINAL.sh -q https://owncloud.reeuwijk.net/index.php/s/mHTII386yJv1u0d/download
-    sudo chmod 755 dgc-linux-5.5.1-FINAL.sh
-    sudo ./dgc-linux-5.5.1-FINAL.sh -- --config /vagrant/collibra-config.json
-    sudo rm dgc-linux-5.5.1-FINAL.sh
+    sudo chmod 755 /vagrant/dgc-linux-5.5.1-FINAL.sh
+    sudo /vagrant/dgc-linux-5.5.1-FINAL.sh -- --config /vagrant/collibra-config.json
   SHELL
 end
