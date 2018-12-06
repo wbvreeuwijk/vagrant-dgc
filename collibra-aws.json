@@ -24,7 +24,7 @@
       },
       "instance_type": "t2.xlarge",
       "ssh_username": "ec2-user",
-      "ami_name": "collibra-dgc-552 {{timestamp}}"
+      "ami_name": "collibra-dgc-{{user `dgc_version`}} {{timestamp}}"
     }
   ],
   "provisioners": [
