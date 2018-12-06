@@ -2,7 +2,8 @@
   "variables": {
     "aws_access_key": "",
     "aws_secret_key": "",
-    "aws_region": "eu-central-1"
+    "aws_region": "eu-central-1",
+    "dgc_version": "5.5.2-HF2"
   },
   "builders": [
     {
@@ -23,7 +24,7 @@
       },
       "instance_type": "t2.xlarge",
       "ssh_username": "ec2-user",
-      "ami_name": "collibra-dgc-551 {{timestamp}}"
+      "ami_name": "collibra-dgc-552 {{timestamp}}"
     }
   ],
   "provisioners": [
@@ -34,7 +35,7 @@
     },
     {
       "type": "file",
-      "source": "./dgc-linux-5.5.1-FINAL.sh",
+      "source": "./dgc-linux-{{user `dgc_version`}}.sh",
       "destination": "/home/ec2-user/"
     },
     {
@@ -45,9 +46,10 @@
         "sudo yum install expect java-1.8.0-openjdk wget -y",
         "sudo adduser -rm  -s /bin/bash  collibra",
         "echo Download Collibra installer",
-        "sudo chmod 755 dgc-linux-5.5.1-FINAL.sh",
-        "sudo ./dgc-linux-5.5.1-FINAL.sh -- --config /home/ec2-user/collibra-config.json",
-        "sudo rm dgc-linux-5.5.1-FINAL.sh"
+        "sudo chmod 755 dgc-linux-{{user `dgc_version`}}.sh",
+        "sudo ./dgc-linux-{{user `dgc_version`}}.sh -- --config /home/ec2-user/collibra-config.json",
+        "sudo rm dgc-linux-{{user `dgc_version`}}.sh",
+        "sudo rm collibra-config.json"
       ]
     }
   ]
