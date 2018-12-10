@@ -2,7 +2,7 @@
   "variables": {
     "aws_access_key": "",
     "aws_secret_key": "",
-    "aws_region": "eu-central-1",
+    "aws_region": "us-east-1",
     "dgc_version": "5.5.2-HF2"
   },
   "builders": [
@@ -15,6 +15,7 @@
         "filters": {
           "virtualization-type": "hvm",
           "name": "amzn2-ami-hvm-*",
+          "architecture": "x86_64",
           "root-device-type": "ebs"
         },
         "owners": [
@@ -22,7 +23,7 @@
         ],
         "most_recent": true
       },
-      "instance_type": "t2.xlarge",
+      "instance_type": "t3.xlarge",
       "ssh_username": "ec2-user",
       "ami_name": "collibra-dgc-{{user `dgc_version`}} {{timestamp}}"
     }
@@ -43,13 +44,14 @@
       "inline":[
         "cd /home/ec2-user",
         "sudo yum upgrade -y",
-        "sudo yum install expect java-1.8.0-openjdk wget -y",
+        "sudo yum install java-1.8.0-openjdk wget -y",
         "sudo adduser -rm  -s /bin/bash  collibra",
-        "echo Download Collibra installer",
+        "echo Execute Collibra installer",
         "sudo chmod 755 dgc-linux-{{user `dgc_version`}}.sh",
         "sudo ./dgc-linux-{{user `dgc_version`}}.sh -- --config /home/ec2-user/collibra-config.json",
         "sudo rm dgc-linux-{{user `dgc_version`}}.sh",
-        "sudo rm collibra-config.json"
+        "sudo rm collibra-config.json",
+        "sudo shred -u /etc/ssh/*_key /etc/ssh/*_key.pub"
       ]
     }
   ]
